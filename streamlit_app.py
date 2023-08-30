@@ -26,3 +26,8 @@ streamlit.header("Fruityvice Fruit Advice!")
 # New section to import Fruity Vice response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+# turn json response into tabular data
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# then turn into dataframe
+streamlit.dataframe(fruityvice_normalized)
